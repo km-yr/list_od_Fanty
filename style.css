@@ -1,0 +1,164 @@
+:root {
+  --ink: #2b3f5c;
+  --paw: #a9bfd5;
+  --paw-edge: #93abc4;
+  --accent: #b23a3a;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  color: var(--ink);
+  font-family: 'Patrick Hand', 'Comic Sans MS', 'Chalkboard SE', cursive;
+  -webkit-font-smoothing: antialiased;
+}
+
+body { background: #fff; }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, #ffffff 0%, #f3f8fc 45%, #e3eef8 100%);
+}
+
+.scene {
+  display: none;
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  transition: opacity .6s ease;
+}
+.scene.is-active { display: flex; }
+.scene.fading { opacity: 0; }
+
+/* Warstwa z odciskami łapek */
+.trail-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.print {
+  fill: var(--paw);
+  stroke: var(--paw-edge);
+  stroke-width: .8;
+  opacity: 0;
+}
+
+/* SCENA 1 */
+#intro {
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  height: 100vh;
+  height: 100svh;
+}
+
+.cta {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: .45em;
+  font: 400 clamp(1.7rem, 6vw, 2.6rem)/1.2 'Patrick Hand', 'Comic Sans MS', cursive;
+  color: var(--ink);
+  background: rgba(255, 255, 255, .75);
+  border: 2px dashed var(--paw-edge);
+  border-radius: 999px;
+  padding: .35em 1em .4em;
+  margin: 0 1rem;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(12px) scale(.96);
+  transition: opacity .9s ease, transform .9s ease, color .3s ease, border-color .3s ease;
+}
+.cta.show {
+  opacity: 1;
+  transform: none;
+  animation: bob 3s ease-in-out 1s infinite;
+}
+.cta:hover { color: var(--accent); border-color: var(--accent); }
+.cta:hover .cta-paw { transform: rotate(-20deg) scale(1.1); fill: var(--accent); }
+.cta:focus-visible { outline: 3px solid #f0c75e; outline-offset: 4px; }
+.cta:disabled { cursor: default; }
+
+.cta-paw {
+  width: .95em;
+  height: 1.15em;
+  fill: var(--paw-edge);
+  flex: none;
+  transition: transform .3s ease, fill .3s ease;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* SCENA 2 */
+#letter-scene {
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(1.5rem, 6vh, 4rem) clamp(.9rem, 4vw, 2rem);
+  overflow: hidden;
+}
+
+.letter {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 680px);
+  margin: 0 auto;
+  padding: clamp(1.4rem, 5vw, 3rem) clamp(1.2rem, 5vw, 3.2rem);
+  background: rgba(255, 255, 255, .88);
+  border-radius: 28px;
+  box-shadow: 0 10px 40px rgba(60, 95, 135, .12);
+  font-size: clamp(1.18rem, 3.7vw, 1.45rem);
+  line-height: 1.55;
+  text-align: center;
+}
+
+.letter h1 {
+  margin: 0 0 .8em;
+  font-weight: 400;
+  font-size: 1.75em;
+  line-height: 1.2;
+  color: var(--accent);
+}
+
+.letter p { margin: 0 0 1em; }
+
+.signature { margin-top: 1.6em; }
+.signature p { margin: 0; }
+.signature .name {
+  display: inline-flex;
+  align-items: center;
+  gap: .35em;
+  margin-top: .2em;
+  font-size: 1.9em;
+  color: var(--accent);
+}
+.stamp {
+  width: .8em;
+  height: 1em;
+  fill: var(--accent);
+  opacity: .85;
+  transform: rotate(14deg);
+}
+
+/* Tekst pojawia się od razu, z delikatnym wejściem */
+.letter-scene-in .letter { animation: rise .7s ease both; }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta.show { animation: none; }
+  .letter-scene-in .letter { animation: none; }
+}

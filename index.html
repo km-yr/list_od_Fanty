@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>List do Psikołaja</title>
+  <meta name="description" content="List do Psikołaja od Fanty">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-16 -20 32 36'%3E%3Cg fill='%237f9bb8'%3E%3Cellipse cx='-9' cy='-6' rx='3.4' ry='4.4'/%3E%3Cellipse cx='-3.5' cy='-11.5' rx='3.4' ry='4.6'/%3E%3Cellipse cx='3.5' cy='-11.5' rx='3.4' ry='4.6'/%3E%3Cellipse cx='9' cy='-6' rx='3.4' ry='4.4'/%3E%3Cpath d='M0 0C6 0 11 5 11 10C11 14 7 15 4 14C2 13.5 1 13 0 13C-1 13-2 13.5-4 14C-7 15-11 14-11 10C-11 5-6 0 0 0Z'/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- wzór odcisku łapki, używany przez skrypt -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="paw" viewBox="-14 -18 28 34" overflow="visible">
+        <ellipse cx="-9" cy="-6" rx="3.4" ry="4.4"/>
+        <ellipse cx="-3.5" cy="-11.5" rx="3.4" ry="4.6"/>
+        <ellipse cx="3.5" cy="-11.5" rx="3.4" ry="4.6"/>
+        <ellipse cx="9" cy="-6" rx="3.4" ry="4.4"/>
+        <path d="M0 0C6 0 11 5 11 10C11 14 7 15 4 14C2 13.5 1 13 0 13C-1 13-2 13.5-4 14C-7 15-11 14-11 10C-11 5-6 0 0 0Z"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- SCENA 1: tropy na śniegu -->
+  <section id="intro" class="scene is-active">
+    <svg id="intro-trail" class="trail-layer" aria-hidden="true"></svg>
+    <button id="open-letter" class="cta" type="button" disabled>
+      <svg class="cta-paw" aria-hidden="true"><use href="#paw"/></svg>
+      Przeczytaj list do Psikołaja
+    </button>
+  </section>
+
+  <!-- SCENA 2: list -->
+  <section id="letter-scene" class="scene" aria-hidden="true">
+    <svg id="side-trails" class="trail-layer" aria-hidden="true"></svg>
+
+    <article class="letter">
+      <h1>Święty Psikołaju! Hau!</h1>
+
+      <p>Piszę do Ciebie łapką, więc wybacz, jeśli gdzieś się poślizgnę na klawiaturze.</p>
+
+      <p>Przez (prawie) cały rok byłam grzeczną psórką dla mamusi i taty. Zawsze się do nich przytulam, kiedy razem czilujemy na kanapie, i grzeję im nóżki lepiej niż niejeden kocyk.</p>
+
+      <p>Mimo tego, że nie chodzę do pracy, nie dokładam się do czynszu (moje oszczędności to trzy patyki, jedna piłka i kilka pogryzionych pluszaków), a większość dnia spędzam w domu, to staram się za bardzo nie bałaganić, no chyba trochę sierści potrafię zgubić, ale potem rodzice i tak wciągają ją tą straszną maszyną o mrocznej nazwie DYSON (brrrr).</p>
+
+      <p>Ostatnio byłam też niesamowicie odważna! Broniłam naszego legowiska przed strasznym intruzem, Złowieszczą Nornicą. Szczekałam, warczałam, aż każdy włos stanął mi dęba i ostatecznie przegoniłam intruza (chyba). Dom jest bezpieczny, wszyscy mogą spać spokojnie.</p>
+
+      <p>A skoro już ustaliliśmy, że byłam grzeczna, to pod choinkę poproszę moje ulubione przysmaczki. Najbardziej lubię liofilizowane oraz miękkie mięsko (mniam, mniam!). Lubię prawie każde, tylko nie ptasie, bo od ptaszków robi mi się niedobrze w brzuszku… a potem robi się niedobrze wszystkim w domu. Dlatego bardzo proszę o jagnięcinkę, wołowinkę, wieprzowinkę albo jakiegoś innego małego bawołka.</p>
+
+      <p>Duży bawołek też może być, zmieszczę!</p>
+
+      <footer class="signature">
+        <p>Merdam ogonkiem i mlemlam po buzi,</p>
+        <p class="name">
+          Fanta
+          <svg class="stamp" aria-hidden="true"><use href="#paw"/></svg>
+        </p>
+      </footer>
+    </article>
+  </section>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
